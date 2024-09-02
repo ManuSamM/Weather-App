@@ -1,0 +1,37 @@
+.weatherApp {
+    display: flex;
+    justify-content: center;
+    height: 46rem;
+}
+
+.weatherCard {
+    opacity: 1;
+    border: 1px solid rgba(255, 255, 255);
+    padding: 1em;
+    border-radius: 25px;
+    min-width: 27em;
+    width: auto;
+    text-align: center;
+    margin-top: 1em;
+    height: 32em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.weatherCard:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 12px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+}
+
+.searchBox {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: white;
+}
+
+.searchButton {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 10px;
+}

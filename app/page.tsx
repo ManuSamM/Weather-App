@@ -1,7 +1,9 @@
-'use client';
+"use client";
+
 import { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
+import styles from "./weather.module.css";
 
 interface WeatherData {
   location: {
@@ -56,22 +58,22 @@ export default function Home() {
   };
 
   return (
-    <div style={getBackgroundStyle(weatherData)}>
-      <div style={{ textAlign: "center", padding: "50px" }}>
-        <h1>Weather Dashboard</h1>
+    <div className={styles.weatherApp} style={getBackgroundStyle(weatherData)}>
+      <div className={styles.weatherCard}>
+        <h1 style={{ color: "white" }}>Weather Dashboard</h1>
         <form onSubmit={handleSubmit}>
           <input
+            className={styles.searchBox}
             type="text"
             placeholder="Enter city name"
             value={city}
             onChange={handleInputChange}
-            style={{ padding: "10px", fontSize: "16px" }}
           />
           <button
+          className={styles.searchButton}
             type="submit"
-            style={{ padding: "10px 20px", marginLeft: "10px" }}
           >
-            Search
+            <div style={{fontSize: "16px"}}>Search</div>
           </button>
         </form>
         {error && <p style={{ color: "red" }}>{error}</p>}
@@ -104,12 +106,35 @@ export default function Home() {
   );
 }
 
+// Time-based and weather-based gradient colors
 function getBackgroundStyle(weatherData: WeatherData | null) {
-  if (!weatherData) return { backgroundColor: "#87CEEB", height: "100vh" };
+  if (!weatherData) return { background: "#87CEEB", height: "100vh" };
 
   const weather = weatherData.current.condition.text.toLowerCase();
+  const localTime = new Date(weatherData.location.localtime);
+  const hours = localTime.getHours();
+
+  let timeColor: string;
   let weatherColor: string;
 
+  // Determine the base color based on the time of day
+  if (hours >= 0 && hours < 6) {
+    timeColor = "#2c3e50"; // Midnight to dawn (dark blue)
+  } else if (hours >= 6 && hours < 9) {
+    timeColor = "#f39c12"; // Dawn to morning (orange)
+  } else if (hours >= 9 && hours < 12) {
+    timeColor = "#f1c40f"; // Morning to noon (yellow)
+  } else if (hours >= 12 && hours < 15) {
+    timeColor = "#3498db"; // Noon to afternoon (sky blue)
+  } else if (hours >= 15 && hours < 18) {
+    timeColor = "#e67e22"; // Afternoon to evening (orange-red)
+  } else if (hours >= 18 && hours < 21) {
+    timeColor = "#8e44ad"; // Evening to night (purple)
+  } else {
+    timeColor = "#2c3e50"; // Night (dark blue)
+  }
+
+  // Determine the weather color
   switch (weather) {
     case "sunny":
     case "clear":
@@ -139,9 +164,6 @@ function getBackgroundStyle(weatherData: WeatherData | null) {
   }
 
   return {
-    backgroundColor: weatherColor,
-    height: "100vh",
-    display: "flex",
-    justifyContent: "center",
+    background: `linear-gradient(135deg, ${timeColor}, ${weatherColor})`,
   };
 }
