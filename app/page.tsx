@@ -76,7 +76,7 @@ export default function Home() {
         </form>
         {error && <p style={{ color: "red" }}>{error}</p>}
         {weatherData && (
-          <div style={{ marginTop: "30px", color: "#fff" }}>
+          <div style={{ marginTop: "30px" }}>
             <h2>
               {weatherData.location.name}, {weatherData.location.country}
             </h2>
@@ -143,6 +143,5 @@ function getBackgroundStyle(weatherData: WeatherData | null) {
     height: "100vh",
     display: "flex",
     justifyContent: "center",
-    color: "#fff",
   };
 }
