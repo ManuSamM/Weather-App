@@ -3,7 +3,7 @@
 import { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import styles from "./weather.module.css";
+import styles from "./home.module.css";
 
 interface WeatherData {
   location: {
@@ -69,11 +69,8 @@ export default function Home() {
             value={city}
             onChange={handleInputChange}
           />
-          <button
-          className={styles.searchButton}
-            type="submit"
-          >
-            <div style={{fontSize: "16px"}}>Search</div>
+          <button className={styles.searchButton} type="submit">
+            <div style={{ fontSize: "16px" }}>Search</div>
           </button>
         </form>
         {error && <p style={{ color: "red" }}>{error}</p>}
@@ -92,7 +89,9 @@ export default function Home() {
             </p>
             <p>Humidity: {weatherData.current.humidity}%</p>
             <p>Wind Speed: {weatherData.current.wind_kph} kmph</p>
-            <p><b>{weatherData.current.condition.text}</b></p>
+            <p>
+              <b>{weatherData.current.condition.text}</b>
+            </p>
             <Image
               src={`https:${weatherData.current.condition.icon}`}
               alt="weather icon"
