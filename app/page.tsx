@@ -91,8 +91,8 @@ export default function Home() {
               {weatherData.current.temp_f}°F
             </p>
             <p>Humidity: {weatherData.current.humidity}%</p>
-            <p>Wind Speed: {weatherData.current.wind_kph} kph</p>
-            <p>{weatherData.current.condition.text}</p>
+            <p>Wind Speed: {weatherData.current.wind_kph} kmph</p>
+            <p><b>{weatherData.current.condition.text}</b></p>
             <Image
               src={`https:${weatherData.current.condition.icon}`}
               alt="weather icon"
