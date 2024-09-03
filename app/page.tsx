@@ -95,8 +95,8 @@ export default function Home() {
             <Image
               src={`https:${weatherData.current.condition.icon}`}
               alt="weather icon"
-              width={64}
-              height={64}
+              width={100}
+              height={100}
             />
           </div>
         )}

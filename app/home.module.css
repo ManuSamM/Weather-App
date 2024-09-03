@@ -7,7 +7,7 @@
 
 .weatherCard {
     opacity: 1;
-    border: 1px solid rgba(255, 255, 255);
+    border: 3px solid rgba(255, 255, 255);
     padding: 1em;
     border-radius: 25px;
     min-width: 27em;
