@@ -107,7 +107,7 @@ export default function Home() {
 
 // Time-based and weather-based gradient colors
 function getBackgroundStyle(weatherData: WeatherData | null) {
-  if (!weatherData) return { background: "#87CEEB", height: "100vh" };
+  if (!weatherData) return { background: "lightskyblue" };
 
   const weather = weatherData.current.condition.text.toLowerCase();
   const localTime = new Date(weatherData.location.localtime);
